@@ -530,29 +530,31 @@
 /* Tools Section */
 .fra-nav-tools {
     padding: 12px 16px;
-    border-top: 2px solid #d4a853;
-    background: linear-gradient(135deg, #fef9e7 0%, #fdf6e3 100%);
+    border-top: 1px solid var(--fra-gray-200);
+    background: var(--fra-gray-50);
 }
 
 .fra-tool-btn {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     width: 100%;
-    padding: 10px 12px;
-    background: var(--fra-white);
-    border: 1px solid var(--fra-gray-200);
-    border-radius: var(--fra-radius);
+    padding: 12px 14px;
+    background: #1a1a1a;
+    color: #fafaf8;
+    border: 2px solid rgba(212, 168, 83, 0.4);
+    border-radius: 8px;
     font-family: var(--fra-font);
-    font-size: 13px;
-    color: var(--fra-gray-600);
+    font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
-    transition: all var(--fra-transition);
+    transition: all 0.2s ease;
 }
 
 .fra-tool-btn:hover {
-    border-color: var(--fra-gray-300);
-    color: var(--fra-black);
+    background: #2a2a2a;
+    border-color: rgba(212, 168, 83, 0.7);
+    color: #fafaf8;
 }
 
 /* Locked Tool State (non-members) */
