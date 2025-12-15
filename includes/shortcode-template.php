@@ -491,7 +491,7 @@ $inchat_auth_enabled = $customizer['inchat_auth_enabled'] ?? true;
             <!-- Tools Section (fixed at bottom) -->
             <div class="fra-nav-tools">
                 <?php if ($is_member && is_user_logged_in()) : ?>
-                <button id="fra-day-counter-btn" class="fra-tool-btn">
+                <button id="fra-day-counter-btn" class="fra-tool-btn" style="background: <?php echo esc_attr($member_header_bg); ?>; color: <?php echo esc_attr($member_header_text); ?>; border-color: <?php echo esc_attr($member_header_accent); ?>;">
                     📅 183-Day Counter
                 </button>
                 <?php else : ?>
