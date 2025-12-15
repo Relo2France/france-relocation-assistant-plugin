@@ -530,8 +530,8 @@
 /* Tools Section */
 .fra-nav-tools {
     padding: 12px 16px;
-    border-top: 1px solid var(--fra-gray-200);
-    background: var(--fra-gray-50);
+    border-top: 2px solid #d4a853;
+    background: linear-gradient(135deg, #fef9e7 0%, #fdf6e3 100%);
 }
 
 .fra-tool-btn {
