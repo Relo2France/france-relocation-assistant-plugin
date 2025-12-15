@@ -3,7 +3,7 @@
  * Plugin Name: France Relocation Assistant
  * Plugin URI: https://relo2france.com
  * Description: AI-powered US to France relocation guidance with visa info, property guides, healthcare, taxes, and practical insights. Features weekly auto-updates, "In Practice" real-world advice, and comprehensive knowledge base.
- * Version: 2.9.100
+ * Version: 2.9.101
  * Author: Relo2France
  * Author URI: https://relo2france.com
  * License: GPL v2 or later
@@ -42,7 +42,7 @@ if (!defined('ABSPATH')) {
 | Plugin Constants
 |--------------------------------------------------------------------------
 */
-define('FRA_VERSION', '2.9.100');
+define('FRA_VERSION', '2.9.101');
 define('FRA_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('FRA_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('FRA_PLUGIN_BASENAME', plugin_basename(__FILE__));
@@ -151,7 +151,10 @@ class France_Relocation_Assistant {
         
         // Login redirect - go to home page with welcome message
         add_filter('login_redirect', array($this, 'login_redirect'), 999, 3);
-        
+
+        // MemberPress-specific login redirect
+        add_filter('mepr-login-redirect-url', array($this, 'mepr_login_redirect'), 999, 2);
+
         // Login failed - redirect back to home with error
         add_action('wp_login_failed', array($this, 'login_failed_redirect'), 999, 2);
         
@@ -220,7 +223,32 @@ class France_Relocation_Assistant {
         if (is_object($user) && !empty($user->roles) && in_array('administrator', $user->roles)) {
             return $redirect_to;
         }
-        
+
+        return home_url('/?logged_in=1');
+    }
+
+    /**
+     * MemberPress-specific login redirect
+     * MemberPress has its own redirect filter that we need to hook into
+     *
+     * @param string $redirect_to Default redirect URL
+     * @param object $user User object (may be MeprUser)
+     * @return string New redirect URL
+     */
+    public function mepr_login_redirect($redirect_to, $user = null) {
+        // Don't redirect admins
+        if (is_object($user) && method_exists($user, 'is_admin') && $user->is_admin()) {
+            return $redirect_to;
+        }
+
+        // Check WP user roles as fallback
+        if (is_object($user) && isset($user->ID)) {
+            $wp_user = get_userdata($user->ID);
+            if ($wp_user && in_array('administrator', (array) $wp_user->roles)) {
+                return $redirect_to;
+            }
+        }
+
         return home_url('/?logged_in=1');
     }
     
