@@ -538,11 +538,11 @@
     align-items: center;
     gap: 10px;
     width: 100%;
-    padding: 12px 14px;
-    background: #1a1a1a;
-    color: #fafaf8;
-    border: 2px solid rgba(212, 168, 83, 0.4);
-    border-radius: 8px;
+    padding: 12px 14px !important;
+    background: #1a1a1a !important;
+    color: #fafaf8 !important;
+    border: 2px solid rgba(212, 168, 83, 0.4) !important;
+    border-radius: 8px !important;
     font-family: var(--fra-font);
     font-size: 14px;
     font-weight: 500;
@@ -551,9 +551,9 @@
 }
 
 .fra-tool-btn:hover {
-    background: #2a2a2a;
-    border-color: rgba(212, 168, 83, 0.7);
-    color: #fafaf8;
+    background: #2a2a2a !important;
+    border-color: rgba(212, 168, 83, 0.7) !important;
+    color: #fafaf8 !important;
 }
 
 /* Locked Tool State (non-members) */
