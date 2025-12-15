@@ -775,6 +775,8 @@ $inchat_auth_enabled = $customizer['inchat_auth_enabled'] ?? true;
                             <line x1="12" y1="17" x2="12.01" y2="17"/>
                         </svg>
                     </button>
+                    <!-- Hidden version - select/highlight to see -->
+                    <span style="font-size:9px;color:#f5f5f5;background:#f5f5f5;padding:2px 4px;margin-left:8px;user-select:all;">v<?php echo defined('FRA_VERSION') ? FRA_VERSION : '?'; ?></span>
                 </div>
             </div>
             <!-- /Chat Input Area -->
