@@ -533,6 +533,8 @@
     background: transparent;
 }
 
+/* 183-Day Counter Button - matches user dropdown style */
+#fra-day-counter-btn,
 .fra-tool-btn {
     display: flex;
     align-items: center;
@@ -550,6 +552,7 @@
     transition: all 0.2s ease;
 }
 
+#fra-day-counter-btn:hover,
 .fra-tool-btn:hover {
     background: #2a2a2a !important;
     border-color: rgba(212, 168, 83, 0.7) !important;
