@@ -119,7 +119,7 @@ class FRA_SEO_Pages {
      *
      * @return array Knowledge base data
      */
-    private function get_kb() {
+    public function get_kb() {
         // Return cached if available
         if ($this->kb_cache !== null) {
             return $this->kb_cache;
@@ -133,7 +133,7 @@ class FRA_SEO_Pages {
         }
 
         // Fallback: try database
-        $kb = $this->get_kb();
+        $kb = get_option('fra_knowledge_base', array());
 
         // If empty, load from default file
         if (empty($kb)) {
@@ -955,8 +955,11 @@ class FRA_SEO_Pages {
      */
     public static function get_all_urls() {
         $urls = array();
-        $kb = $this->get_kb();
         $site_url = home_url();
+
+        // Get KB via instance
+        $instance = self::get_instance();
+        $kb = $instance->get_kb();
 
         $urls[] = $site_url . '/guide/';
 
