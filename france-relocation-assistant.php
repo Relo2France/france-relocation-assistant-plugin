@@ -49,6 +49,15 @@ define('FRA_PLUGIN_BASENAME', plugin_basename(__FILE__));
 
 /*
 |--------------------------------------------------------------------------
+| Early Includes (needed before class methods run)
+|--------------------------------------------------------------------------
+*/
+require_once FRA_PLUGIN_DIR . 'includes/testimonials.php';
+require_once FRA_PLUGIN_DIR . 'includes/breadcrumb.php';
+require_once FRA_PLUGIN_DIR . 'includes/search.php';
+
+/*
+|--------------------------------------------------------------------------
 | Main Plugin Class
 |--------------------------------------------------------------------------
 |
@@ -1694,14 +1703,9 @@ require_once FRA_PLUGIN_DIR . 'includes/class-fra-scheduled-review.php';
 require_once FRA_PLUGIN_DIR . 'includes/class-fra-site-header.php';
 require_once FRA_PLUGIN_DIR . 'includes/class-fra-auth-pages.php';
 
-// Testimonials and social proof
-require_once FRA_PLUGIN_DIR . 'includes/testimonials.php';
-
-// Breadcrumb navigation
-require_once FRA_PLUGIN_DIR . 'includes/breadcrumb.php';
-
-// Search-First Interface
-require_once FRA_PLUGIN_DIR . 'includes/search.php';
+// Note: testimonials.php, breadcrumb.php, and search.php are included
+// at the top of the file (after constants) so their functions are
+// available when enqueue_scripts runs.
 
 // Initialize AI Review (registers AJAX handlers)
 FRA_AI_Review::get_instance();
