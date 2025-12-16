@@ -34,6 +34,11 @@ class FRA_SEO_Pages {
     private static $instance = null;
 
     /**
+     * Cached knowledge base data
+     */
+    private $kb_cache = null;
+
+    /**
      * Category metadata for SEO
      */
     private static $category_meta = array(
@@ -107,6 +112,39 @@ class FRA_SEO_Pages {
 
         // Flush rewrite rules on activation
         register_activation_hook(FRA_PLUGIN_BASENAME, array($this, 'flush_rewrite_rules'));
+    }
+
+    /**
+     * Get knowledge base data (with fallback to default file)
+     *
+     * @return array Knowledge base data
+     */
+    private function get_kb() {
+        // Return cached if available
+        if ($this->kb_cache !== null) {
+            return $this->kb_cache;
+        }
+
+        // Try to get from main plugin instance first
+        $fra = France_Relocation_Assistant::get_instance();
+        if ($fra && method_exists($fra, 'get_knowledge_base')) {
+            $this->kb_cache = $fra->get_knowledge_base();
+            return $this->kb_cache;
+        }
+
+        // Fallback: try database
+        $kb = $this->get_kb();
+
+        // If empty, load from default file
+        if (empty($kb)) {
+            $default_file = FRA_PLUGIN_DIR . 'includes/knowledge-base-default.php';
+            if (file_exists($default_file)) {
+                $kb = include $default_file;
+            }
+        }
+
+        $this->kb_cache = $kb;
+        return $this->kb_cache;
     }
 
     /**
@@ -203,7 +241,7 @@ class FRA_SEO_Pages {
 
         // Handle category or topic pages
         if ($category) {
-            $kb = get_option('fra_knowledge_base', array());
+            $kb = $this->get_kb();
 
             if (!isset($kb[$category])) {
                 // Category not found - 404
@@ -234,7 +272,7 @@ class FRA_SEO_Pages {
      * Render the main guide index page
      */
     private function render_guide_index() {
-        $kb = get_option('fra_knowledge_base', array());
+        $kb = $this->get_kb();
 
         $title = 'France Relocation Guide - Complete Resource for Americans Moving to France';
         $description = 'Comprehensive guide covering visas, property purchase, healthcare, taxes, driving, banking, and settling in France. Expert information for US citizens.';
@@ -472,7 +510,7 @@ class FRA_SEO_Pages {
     private function render_xml_sitemap() {
         header('Content-Type: application/xml; charset=utf-8');
 
-        $kb = get_option('fra_knowledge_base', array());
+        $kb = $this->get_kb();
         $site_url = home_url();
 
         echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
@@ -525,7 +563,7 @@ class FRA_SEO_Pages {
      * Render HTML sitemap page
      */
     private function render_html_sitemap() {
-        $kb = get_option('fra_knowledge_base', array());
+        $kb = $this->get_kb();
 
         $title = 'Sitemap - France Relocation Guide';
         $description = 'Complete sitemap of all France relocation guide pages. Find information on visas, property, healthcare, taxes, and more.';
@@ -686,7 +724,7 @@ class FRA_SEO_Pages {
             $breadcrumbs[] = array('name' => $cat_meta['title'], 'url' => $site_url . '/guide/' . $category . '/');
 
             if ($topic) {
-                $kb = get_option('fra_knowledge_base', array());
+                $kb = $this->get_kb();
                 $topic_title = isset($kb[$category][$topic]['title']) ? $kb[$category][$topic]['title'] : ucfirst($topic);
                 $breadcrumbs[] = array('name' => $topic_title, 'url' => $url);
             }
@@ -827,7 +865,7 @@ class FRA_SEO_Pages {
      * Render related topics section
      */
     private function render_related_topics($current_category, $current_topic) {
-        $kb = get_option('fra_knowledge_base', array());
+        $kb = $this->get_kb();
 
         if (!isset($kb[$current_category])) return;
 
@@ -864,7 +902,7 @@ class FRA_SEO_Pages {
      * Render related categories section
      */
     private function render_related_categories($current_category) {
-        $kb = get_option('fra_knowledge_base', array());
+        $kb = $this->get_kb();
 
         $related = array();
         foreach (array_keys($kb) as $cat_key) {
@@ -917,7 +955,7 @@ class FRA_SEO_Pages {
      */
     public static function get_all_urls() {
         $urls = array();
-        $kb = get_option('fra_knowledge_base', array());
+        $kb = $this->get_kb();
         $site_url = home_url();
 
         $urls[] = $site_url . '/guide/';
