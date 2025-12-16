@@ -1,0 +1,511 @@
+/**
+ * SEO Pages Styles
+ *
+ * Styles for virtual SEO guide pages generated from KB data.
+ * Clean, readable, and optimized for accessibility.
+ *
+ * @package FranceRelocationAssistant
+ * @version 3.3.0
+ */
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+
+.fra-seo-page-body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #1a202c;
+    background: #f7fafc;
+    margin: 0;
+    padding: 0;
+}
+
+.fra-seo-page {
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+}
+
+.fra-seo-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   HEADER & BREADCRUMBS
+   ========================================================================== */
+
+.fra-seo-header {
+    margin-bottom: 2.5rem;
+}
+
+.fra-seo-breadcrumb {
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+}
+
+.fra-seo-breadcrumb ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.fra-seo-breadcrumb li {
+    display: flex;
+    align-items: center;
+}
+
+.fra-seo-breadcrumb li:not(:last-child)::after {
+    content: '›';
+    margin-left: 0.5rem;
+    color: #a0aec0;
+}
+
+.fra-seo-breadcrumb a {
+    color: #2b6cb0;
+    text-decoration: none;
+}
+
+.fra-seo-breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.fra-seo-header h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 0 0 0.75rem;
+    line-height: 1.2;
+}
+
+.fra-page-icon {
+    margin-right: 0.5rem;
+}
+
+.fra-seo-subtitle {
+    font-size: 1.125rem;
+    color: #4a5568;
+    margin: 0;
+}
+
+.fra-last-updated {
+    font-size: 0.875rem;
+    color: #718096;
+    margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   GUIDE INDEX - CATEGORY CARDS
+   ========================================================================== */
+
+.fra-guide-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.fra-guide-category-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    display: block;
+}
+
+.fra-guide-category-card:hover {
+    border-color: #2b6cb0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.fra-guide-category-card .fra-category-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.fra-guide-category-card h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: #1a202c;
+}
+
+.fra-guide-category-card p {
+    font-size: 0.9375rem;
+    color: #4a5568;
+    margin: 0 0 1rem;
+    line-height: 1.5;
+}
+
+.fra-guide-category-card .fra-topic-count {
+    font-size: 0.8125rem;
+    color: #2b6cb0;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   CATEGORY PAGE - TOPIC LIST
+   ========================================================================== */
+
+.fra-topic-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+}
+
+.fra-topic-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s ease;
+}
+
+.fra-topic-card:hover {
+    border-color: #cbd5e0;
+}
+
+.fra-topic-card h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+}
+
+.fra-topic-card h2 a {
+    color: #1a202c;
+    text-decoration: none;
+}
+
+.fra-topic-card h2 a:hover {
+    color: #2b6cb0;
+}
+
+.fra-topic-card p {
+    font-size: 0.9375rem;
+    color: #4a5568;
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+}
+
+.fra-read-more {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #2b6cb0;
+    text-decoration: none;
+}
+
+.fra-read-more:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   TOPIC PAGE - CONTENT
+   ========================================================================== */
+
+.fra-topic-content {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.fra-content-body {
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+.fra-content-body p {
+    margin: 0 0 1.25rem;
+}
+
+.fra-content-body h2,
+.fra-content-body h3 {
+    margin: 2rem 0 1rem;
+    color: #1a202c;
+}
+
+.fra-content-body h2 {
+    font-size: 1.5rem;
+}
+
+.fra-content-body h3 {
+    font-size: 1.25rem;
+}
+
+.fra-content-body ul,
+.fra-content-body ol {
+    margin: 0 0 1.25rem;
+    padding-left: 1.5rem;
+}
+
+.fra-content-body li {
+    margin-bottom: 0.5rem;
+}
+
+.fra-content-body strong {
+    color: #1a202c;
+    font-weight: 600;
+}
+
+.fra-content-body a {
+    color: #2b6cb0;
+}
+
+.fra-content-body a:hover {
+    text-decoration: underline;
+}
+
+/* Sources */
+.fra-sources {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.fra-sources h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    color: #4a5568;
+}
+
+.fra-sources ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.fra-sources li {
+    margin-bottom: 0.375rem;
+}
+
+.fra-sources a {
+    font-size: 0.875rem;
+    color: #2b6cb0;
+    text-decoration: none;
+}
+
+.fra-sources a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   RELATED TOPICS & CATEGORIES
+   ========================================================================== */
+
+.fra-related-topics,
+.fra-related-categories {
+    margin-bottom: 2rem;
+}
+
+.fra-related-topics h3,
+.fra-related-categories h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    color: #1a202c;
+}
+
+.fra-related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+}
+
+.fra-related-card {
+    display: block;
+    padding: 0.875rem 1rem;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    color: #2b6cb0;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.fra-related-card:hover {
+    background: #ebf8ff;
+    border-color: #2b6cb0;
+}
+
+/* ==========================================================================
+   CTA SECTION
+   ========================================================================== */
+
+.fra-cta-section {
+    text-align: center;
+    background: linear-gradient(135deg, #1E3A5F 0%, #2b5a8a 100%);
+    color: #ffffff;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+}
+
+.fra-cta-section h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+}
+
+.fra-cta-section p {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin: 0 0 1.5rem;
+}
+
+.fra-cta-button {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    background: #ffffff;
+    color: #1E3A5F;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.fra-cta-button:hover {
+    background: #ebf8ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   SITEMAP PAGE
+   ========================================================================== */
+
+.fra-sitemap-content {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.fra-sitemap-section {
+    margin-bottom: 2rem;
+}
+
+.fra-sitemap-section:last-child {
+    margin-bottom: 0;
+}
+
+.fra-sitemap-section h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.fra-sitemap-section h2 a {
+    color: #1a202c;
+    text-decoration: none;
+}
+
+.fra-sitemap-section h2 a:hover {
+    color: #2b6cb0;
+}
+
+.fra-sitemap-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 0.375rem;
+}
+
+.fra-sitemap-section li a {
+    display: block;
+    padding: 0.375rem 0;
+    color: #2b6cb0;
+    font-size: 0.9375rem;
+    text-decoration: none;
+}
+
+.fra-sitemap-section li a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .fra-seo-page {
+        padding: 1.5rem 1rem 3rem;
+    }
+
+    .fra-seo-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .fra-guide-categories {
+        grid-template-columns: 1fr;
+    }
+
+    .fra-topic-content {
+        padding: 1.5rem;
+    }
+
+    .fra-related-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fra-cta-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .fra-sitemap-section ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .fra-seo-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .fra-seo-breadcrumb {
+        font-size: 0.8125rem;
+    }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+    .fra-seo-page-body {
+        background: #ffffff;
+    }
+
+    .fra-seo-page {
+        padding: 0;
+    }
+
+    .fra-cta-section {
+        display: none;
+    }
+
+    .fra-topic-content,
+    .fra-guide-category-card,
+    .fra-topic-card {
+        border: 1px solid #ccc;
+        box-shadow: none;
+    }
+}
