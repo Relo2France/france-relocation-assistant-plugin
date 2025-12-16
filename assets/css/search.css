@@ -1,0 +1,271 @@
+/**
+ * Search-First Interface Styles
+ *
+ * @package FranceRelocationAssistant
+ * @version 3.1.0
+ */
+
+/* ==========================================================================
+   SEARCH CONTAINER
+   ========================================================================== */
+
+.fra-search-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+}
+
+.fra-search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* ==========================================================================
+   SEARCH INPUT
+   ========================================================================== */
+
+.fra-search-input {
+    width: 100%;
+    padding: 0.875rem 2.75rem 0.875rem 3rem;
+    font-size: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #1a202c;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.fra-search-input::placeholder {
+    color: #a0aec0;
+}
+
+.fra-search-input:hover {
+    border-color: #cbd5e0;
+}
+
+.fra-search-input:focus {
+    border-color: #1E3A5F;
+    box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.15);
+}
+
+/* ==========================================================================
+   SEARCH ICON & CLEAR BUTTON
+   ========================================================================== */
+
+.fra-search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+
+.fra-search-clear {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: none;
+    background: #e2e8f0;
+    border-radius: 50%;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.fra-search-clear:hover {
+    background: #cbd5e0;
+    color: #475569;
+}
+
+/* ==========================================================================
+   SEARCH RESULTS DROPDOWN
+   ========================================================================== */
+
+.fra-search-results {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+/* ==========================================================================
+   RESULT ITEMS
+   ========================================================================== */
+
+.fra-search-result-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: none;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.fra-search-result-item:last-child {
+    border-bottom: none;
+}
+
+.fra-search-result-item:hover,
+.fra-search-result-item:focus {
+    background: #f8fafc;
+    outline: none;
+}
+
+.fra-search-result-item:focus {
+    background: #e3f2fd;
+}
+
+.fra-search-result-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    border-radius: 8px;
+    font-size: 1.125rem;
+    margin-right: 0.75rem;
+}
+
+.fra-search-result-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.fra-search-result-title {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #1a202c;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fra-search-result-title mark {
+    background: #fef08a;
+    color: inherit;
+    padding: 0;
+    border-radius: 2px;
+}
+
+.fra-search-result-category {
+    font-size: 0.8125rem;
+    color: #64748b;
+}
+
+.fra-search-result-arrow {
+    flex-shrink: 0;
+    color: #94a3b8;
+    margin-left: 0.5rem;
+    transition: transform 0.15s ease;
+}
+
+.fra-search-result-item:hover .fra-search-result-arrow {
+    transform: translateX(3px);
+    color: #1E3A5F;
+}
+
+/* ==========================================================================
+   NO RESULTS MESSAGE
+   ========================================================================== */
+
+.fra-search-no-results {
+    padding: 1.5rem;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.9375rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE - MOBILE
+   ========================================================================== */
+
+@media (max-width: 640px) {
+    .fra-search-container {
+        max-width: 100%;
+    }
+
+    .fra-search-input {
+        padding: 0.75rem 2.5rem 0.75rem 2.75rem;
+        font-size: 0.9375rem;
+    }
+
+    .fra-search-results {
+        max-height: 300px;
+    }
+
+    .fra-search-result-item {
+        padding: 0.75rem;
+    }
+
+    .fra-search-result-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    .fra-search-result-title {
+        font-size: 0.875rem;
+    }
+
+    .fra-search-result-category {
+        font-size: 0.75rem;
+    }
+}
+
+/* ==========================================================================
+   WELCOME SCREEN INTEGRATION
+   ========================================================================== */
+
+.fra-welcome .fra-search-container {
+    margin-bottom: 2rem;
+}
+
+/* Separator text between search and quick topics */
+.fra-search-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1.25rem 0;
+    color: #94a3b8;
+    font-size: 0.8125rem;
+}
+
+.fra-search-divider::before,
+.fra-search-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.fra-search-divider span {
+    padding: 0 0.75rem;
+}

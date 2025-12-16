@@ -739,8 +739,16 @@ $inchat_auth_enabled = $customizer['inchat_auth_enabled'] ?? true;
                 <div id="fra-welcome" class="fra-welcome">
                     <div class="fra-welcome-icon">🇫🇷</div>
                     <h2>Welcome to France Relocation Assistant</h2>
-                    <p>Select a topic from the menu or ask a question below. AI-powered answers based on official French sources.</p>
-                    
+                    <p>Search our knowledge base or ask a question below. AI-powered answers based on official French sources.</p>
+
+                    <!-- Search-First Interface -->
+                    <?php echo fra_render_search_interface(); ?>
+
+                    <!-- Divider -->
+                    <div class="fra-search-divider">
+                        <span>or browse popular topics</span>
+                    </div>
+
                     <!-- Quick Topic Buttons -->
                     <div class="fra-quick-topics">
                         <?php foreach ($quick_topics as $qt) : ?>
